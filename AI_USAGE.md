@@ -4,10 +4,20 @@ AI assistance was used while building this project. This log records the assista
 
 | Date | Task and prompt summary | AI assistance provided | What I changed or verified | What I learned |
 | --- | --- | --- | --- | --- |
-| 2026-11-20 | Implement walking skeleton; inspect existing project, align Jakarta EE 11 and Java 21 build, add servlet/JSP welcome flow, README and learning notes. | Suggested the minimal Maven configuration, servlet-to-JSP request flow, documentation structure, and manual WildFly deployment instructions. | Inspected the existing POM, wrapper settings, project files, Java/Maven versions, Git status, and installed WildFly path. The implementation is being checked with the Maven build; server deployment is intentionally not part of this run. | The server provides Jakarta APIs at runtime; a servlet can set request data and forward to a protected JSP; EL renders request attributes. |
+| 2026-11-20 | Milestone 1: Jakarta EE walking skeleton. | AI generated `pom.xml`, `WelcomeServlet.java`, `welcome.jsp`, `README.md`, and the Milestone 1 learning log. | I ran the build, deployed the WAR to WildFly, and saw the page in my browser. | I can explain the browser-to-servlet-to-JSP request flow and why the JSP is inside `WEB-INF`. I still need to practise the `pom.xml` details. |
 | 2026-11-22 | Milestone 2: JPA entity model. I wrote the design note and decided the entities, relationships, and seat rule. | AI generated the seven entity classes, two enums, and `docs/MILESTONE_2_LEARNING_LOG.md`. AI selected the initial reservation statuses. | I did not write the entity code myself. I reviewed `ReservationSeat.java` and ran the build. | See my Milestone 2 explanation below. I still need to practise explaining the other entities. |
+| 2026-11-23 | Milestone 3: Development JPA persistence configuration. | AI inspected the WildFly `standalone.xml`, identified the configured H2 datasource, created `persistence.xml`, and wrote `docs/MILESTONE_3_LEARNING_LOG.md`. | I ran `mvnw.cmd clean package` and got `BUILD SUCCESS`. The supplied WildFly log shows MovieTicketBooking deployed, its persistence unit started on H2, and the seat unique constraint was created. The page response was not independently checked over HTTP. | *(User to fill in after reviewing the configuration.)* |
 
 Before submission, update this file whenever AI helps with another task. Record the date, prompt summary, what the AI supplied, what you changed or checked, and what you learned. Follow your instructor's AI-use policy and do not submit code you cannot explain.
+
+## Milestone 1: My decisions
+
+- I chose Jakarta EE 11 with WildFly, WAR packaging, and Java 21.
+- I chose a servlet that forwards to a JSP inside `WEB-INF`.
+- AI generated the initial configuration, servlet, JSP, README, and learning log; I did not write those files myself.
+- I ran the build, deployed the WAR to WildFly, and saw the welcome page in my browser.
+- I can explain the request flow from browser to servlet to JSP, and why the JSP is inside `WEB-INF`.
+- I still need to practise explaining the details in `pom.xml`.
 
 ## Milestone 2: What I changed / what I can explain
 
