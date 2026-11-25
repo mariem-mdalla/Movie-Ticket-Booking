@@ -21,4 +21,12 @@ public class ReservationSeatRepository {
                 .setParameter("showtimeId", showtimeId)
                 .getResultList();
     }
+
+    public void save(com.movieticket.entity.ReservationSeat reservationSeat) {
+        entityManager.persist(reservationSeat);
+    }
+
+    public void flush() {
+        entityManager.flush();
+    }
 }

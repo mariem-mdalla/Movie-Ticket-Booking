@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 // servlet hia java class testa9bal w tet3emel ma3 web requests
-@WebServlet("/") // annotation t9oul lel WildFly enou el servlet hedhy mas2loua ala URL mta3 /
+@WebServlet("/welcome") // Keep this servlet on one URL so static files can use the default servlet.
 public class WelcomeServlet extends HttpServlet {
 // doGet() hia method tetnafadh ki el browser ya3mal HTTP GET Request
     @Override

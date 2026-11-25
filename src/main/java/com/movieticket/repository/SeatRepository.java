@@ -24,6 +24,18 @@ public class SeatRepository {
                 .getResultList();
     }
 
+    public List<Seat> findByIdsAndAuditoriumId(List<Long> seatIds, Long auditoriumId) {
+        return entityManager.createQuery(
+                        "SELECT seat FROM Seat seat " +
+                                "WHERE seat.id IN :seatIds AND seat.auditorium.id = :auditoriumId " +
+                                "ORDER BY seat.rowLabel ASC, seat.seatNumber ASC",
+                        Seat.class
+                )
+                .setParameter("seatIds", seatIds)
+                .setParameter("auditoriumId", auditoriumId)
+                .getResultList();
+    }
+
     public void save(Seat seat) {
         entityManager.persist(seat);
     }

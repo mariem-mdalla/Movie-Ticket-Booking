@@ -66,13 +66,20 @@ public class ShowtimeService {
         Map<String, List<SeatCellView>> seatsByRow = new LinkedHashMap<>();
         for (Seat seat : seats) {
             seatsByRow.computeIfAbsent(seat.getRowLabel(), ignored -> new ArrayList<>())
-                    .add(new SeatCellView(seat.getSeatNumber(), takenIds.contains(seat.getId())));
+                    .add(new SeatCellView(seat.getId(), seat.getSeatNumber(), takenIds.contains(seat.getId())));
         }
 
         List<SeatRowView> rows = seatsByRow.entrySet().stream()
                 .map(entry -> new SeatRowView(entry.getKey(), entry.getValue()))
                 .toList();
         return Optional.of(new SeatMapView(toShowtimeView(showtime), rows));
+    }
+
+    public Optional<List<Long>> listTakenSeatIds(Long showtimeId) {
+        if (showtimeRepository.findWithMovieAndAuditorium(showtimeId).isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(reservationSeatRepository.findTakenSeatIds(showtimeId));
     }
 
     public void seedShowtimesIfEmpty() {
@@ -130,7 +137,8 @@ public class ShowtimeService {
                 showtime.getMovie().getTitle(),
                 showtime.getAuditorium().getName(),
                 showtime.getStartTime(),
-                showtime.calculateEndTime()
+                showtime.calculateEndTime(),
+                showtime.getPrice()
         );
     }
 }

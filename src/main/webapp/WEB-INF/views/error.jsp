@@ -10,7 +10,14 @@
 <body>
     <main>
         <h1>We could not show that page</h1>
-        <p><c:out value="${errorMessage}" /></p>
+        <c:choose>
+            <c:when test="${not empty errorMessage}">
+                <p><c:out value="${errorMessage}" /></p>
+            </c:when>
+            <c:otherwise>
+                <p>The request could not be completed. Please check the address or return to showtimes.</p>
+            </c:otherwise>
+        </c:choose>
         <p><a href="${pageContext.request.contextPath}/showtimes">Return to showtimes</a></p>
     </main>
 </body>
