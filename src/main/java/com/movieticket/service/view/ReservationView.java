@@ -4,9 +4,16 @@ import com.movieticket.entity.ReservationStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 
 public class ReservationView {
+
+    private static final DateTimeFormatter DATE_FORMAT =
+            DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy", Locale.ENGLISH);
+    private static final DateTimeFormatter TIME_FORMAT =
+            DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH);
 
     private final String confirmationCode;
     private final String movieTitle;
@@ -39,4 +46,7 @@ public class ReservationView {
     public List<String> getSeatLabels() { return seatLabels; }
     public BigDecimal getTotalPrice() { return totalPrice; }
     public ReservationStatus getStatus() { return status; }
+    public String getDisplayDate() { return startTime.format(DATE_FORMAT); }
+    public String getDisplayStartTime() { return startTime.format(TIME_FORMAT); }
+    public String getDisplayEndTime() { return endTime.format(TIME_FORMAT); }
 }

@@ -1,20 +1,21 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
-<%--hedhy mas2oula ala presentation ta3 el page kifech todhher--%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${projectName}</title> <%-- hedhy esmha el Expression Language (EL) --%>
-    <%-- ta9ra el attribute eli hatineh fel servlet w ta3radh 9imetha--%>
-    <%-- ya3ni el servlet t7adhar el ma3loumet wel JSP ta3rdhha--%>
-    <%-- w hadha fasl bin el backend wel view--%>
+    <title>Welcome | Movie Ticket Booking</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/site.css">
 </head>
 <body>
-    <main>
-        <h1>Welcome to ${projectName}</h1>
-        <p>The Jakarta EE walking skeleton is ready for its next milestone.</p>
+    <%@ include file="fragments/header.jspf" %>
+    <main class="page-shell">
+        <section class="card">
+            <h1>Welcome to Movie Ticket Booking</h1>
+            <p>Explore films and today's showtimes.</p>
+            <a class="button" href="${pageContext.request.contextPath}/showtimes">Browse showtimes</a>
+        </section>
     </main>
+    <%@ include file="fragments/footer.jspf" %>
 </body>
 </html>
-<%-- esta3mlna el WEB-INF khater el files eli fih --%>

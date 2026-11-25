@@ -2,8 +2,15 @@ package com.movieticket.service.view;
 
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class ShowtimeView {
+
+    private static final DateTimeFormatter DATE_FORMAT =
+            DateTimeFormatter.ofPattern("EEEE, d MMMM yyyy", Locale.ENGLISH);
+    private static final DateTimeFormatter TIME_FORMAT =
+            DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH);
 
     private final Long id;
     private final String movieTitle;
@@ -28,4 +35,7 @@ public class ShowtimeView {
     public LocalDateTime getStartTime() { return startTime; }
     public LocalDateTime getEndTime() { return endTime; }
     public BigDecimal getPrice() { return price; }
+    public String getDisplayDate() { return startTime.format(DATE_FORMAT); }
+    public String getDisplayStartTime() { return startTime.format(TIME_FORMAT); }
+    public String getDisplayEndTime() { return endTime.format(TIME_FORMAT); }
 }

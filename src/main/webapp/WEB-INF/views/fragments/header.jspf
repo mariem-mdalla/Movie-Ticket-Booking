@@ -1,0 +1,10 @@
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="site-brand" href="${pageContext.request.contextPath}/">Movie Ticket Booking</a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="${pageContext.request.contextPath}/movies">Movies</a>
+            <a href="${pageContext.request.contextPath}/showtimes">Showtimes</a>
+        </nav>
+        <span class="account-placeholder" aria-label="Account controls will be added in Milestone 7">Login / Logout</span>
+    </div>
+</header>
